@@ -5,7 +5,8 @@ using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    public bool ButtonMovement;
+    private bool isFlat;
     Rigidbody rb;
     private float xDirection;
     private float moveSpeed = 5f;
@@ -13,13 +14,22 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isFlat = true;
+        ButtonMovement = true;
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        xDirection = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
-        rb.velocity = new Vector3(xDirection, 0f, 0f);
+        if(ButtonMovement == true) {
+            UsingButtonMovement();
+        }
+
+        if(ButtonMovement == false)
+        {
+            UsingAccelerometerMovement();
+        }
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,5 +39,24 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
             Debug.Log("Game Over");
         }
+    }
+
+    void UsingButtonMovement()
+    {
+        xDirection = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
+        rb.velocity = new Vector3(xDirection, 0f, 0f);
+    }
+
+    void UsingAccelerometerMovement()
+    {
+        Vector3 tilt = Input.acceleration;
+        
+        //Direction pointing downward
+        if (isFlat)
+        {
+            tilt = Quaternion.Euler(90, 0, 0) * tilt;
+        }
+
+        rb.AddForce(tilt);
     }
 }
