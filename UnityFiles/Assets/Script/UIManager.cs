@@ -9,11 +9,6 @@ public class UIManager : MonoBehaviour
 
     public GameObject playerMovementButtons;
 
-    private void Awake()
-    {
-        Screen.orientation = ScreenOrientation.LandscapeLeft;
-    }
-
     public void Accelerometer()
     {
         PlayerMovement.ButtonMovement = false;
