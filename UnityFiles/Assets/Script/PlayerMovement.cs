@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
         if(ButtonMovement == false)
         {
             UsingAccelerometerMovement();
-        }
-       
+            Debug.Log("accccellerorting");
+        }       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -49,14 +49,14 @@ public class PlayerMovement : MonoBehaviour
 
     void UsingAccelerometerMovement()
     {
-        Vector3 tilt = Input.acceleration;
-        
+        Vector3 tilt = new Vector3(Input.acceleration.x, 0f, 0f);
+        float accSpeed = 100f;
         //Direction pointing downward
         if (isFlat)
         {
             tilt = Quaternion.Euler(90, 0, 0) * tilt;
         }
 
-        rb.AddForce(tilt);
+        rb.AddForce(tilt * accSpeed);
     }
 }
