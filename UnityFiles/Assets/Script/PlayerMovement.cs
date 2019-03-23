@@ -1,45 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     Rigidbody rb;
-    float speed;
-    float xDirection;
-    private bool rightBtn, leftBtn; 
+    private float xDirection;
+    private float moveSpeed = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rightBtn = false;
-        leftBtn = false;
     }
 
-    public void moveRight() {
-        rightBtn = true;
-    }
-
-    public void moveLeft()
+    private void Update()
     {
-        leftBtn = true;
-        Debug.Log("click");
+        xDirection = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
+        rb.velocity = new Vector3(xDirection, 0f, 0f);
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if(rightBtn == true)
+        if (other.gameObject.tag.Equals("Shredder"))
         {
-            rb.velocity = Vector3.left * speed * Time.deltaTime;
-        }
-
-        if (leftBtn == true)
-        {
-            rb.velocity = Vector3.right * speed * Time.deltaTime;
+            Destroy(gameObject);
+            Debug.Log("Game Over");
         }
     }
 }
