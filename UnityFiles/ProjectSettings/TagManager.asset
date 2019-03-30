@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fire
   - Shredder
+  - CuttingBoard
   layers:
   - Default
   - TransparentFX
