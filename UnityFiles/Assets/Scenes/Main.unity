@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.72797966, g: 0.7869577, b: 0.85057503, a: 1}
+  m_IndirectSpecularColor: {r: 0.73024184, g: 0.78898203, b: 0.8498679, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 865444}
   - component: {fileID: 865445}
   - component: {fileID: 865446}
+  - component: {fileID: 865447}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -170,6 +171,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerMovement: {fileID: 685791392}
   playerMovementButtons: {fileID: 276069512}
+--- !u!114 &865447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b896c6312ab4998a40bc536b1bfdcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 179500, guid: 7ac878e24d375344fb3a31bf0b650d58, type: 3}
+  spawnList: []
 --- !u!1 &20397704
 GameObject:
   m_ObjectHideFlags: 0
