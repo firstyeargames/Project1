@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public bool ButtonMovement;
     private bool isFlat;
-    Rigidbody rb;
+    public Rigidbody rb;
     private float xDirection;
     private float moveSpeed = 5f;
     float maxSpeed = 10f;
