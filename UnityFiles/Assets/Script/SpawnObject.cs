@@ -9,8 +9,7 @@ public class SpawnObject : MonoBehaviour
     Vector3 objPosition;
     Rigidbody objRigidbody;
     float maxSpawnRange, minSpawnRange, randomSpawns;
-    public List<GameObject> spawnList = new List<GameObject>();
-
+    public int knifesSpawned = 0;
 
     private void Start()
     {
@@ -19,7 +18,6 @@ public class SpawnObject : MonoBehaviour
         // Spawn object every 2 seconds, 1 second apart
         InvokeRepeating("spawnObj", 2f, 1f);
         objRigidbody = obj.GetComponent<Rigidbody>();
-
     }
 
     private void Update()
@@ -34,7 +32,7 @@ public class SpawnObject : MonoBehaviour
         spawnHolder = Instantiate(obj, objPosition, Quaternion.identity);
         spawnHolder.transform.eulerAngles = new Vector3(90f, 0f, 90f);
         objRigidbody.GetComponent<Rigidbody>().drag = Random.Range(5, 10);
-        spawnList.Add(spawnHolder);
         objRigidbody.useGravity = true;
+        knifesSpawned++;
     }
 }

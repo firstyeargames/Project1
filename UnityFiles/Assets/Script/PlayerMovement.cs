@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        IfStatements();
+        Statements();
        
     }
 
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         leftButton = false;
     }
 
-    private void IfStatements()
+    private void Statements()
     {
         if (ButtonMovement == false)
         {
