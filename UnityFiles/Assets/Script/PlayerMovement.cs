@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     private float xDirection;
     private float moveSpeed = 5f;
+    float maxSpeed = 10f;
+    bool leftButton, rightButton;
 
     // Start is called before the first frame update
     void Start()
@@ -17,19 +19,14 @@ public class PlayerMovement : MonoBehaviour
         isFlat = true;
         ButtonMovement = true;
         rb = GetComponent<Rigidbody>();
+        rightButton = false;
+        leftButton = false;
     }
 
     private void Update()
     {
-        if(ButtonMovement == true) {
-            UsingButtonMovement();
-        }
-
-        if(ButtonMovement == false)
-        {
-            UsingAccelerometerMovement();
-            Debug.Log("accccellerorting");
-        }       
+        IfStatements();
+       
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,16 +38,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UsingButtonMovement()
-    {
-        xDirection = CrossPlatformInputManager.GetAxis("Horizontal") * moveSpeed;
-        rb.velocity = new Vector3(xDirection, 0f, 0f);
-    }
-
     void UsingAccelerometerMovement()
     {
         Vector3 tilt = new Vector3(Input.acceleration.x, 0f, 0f);
-        float accSpeed = 100f;
+        float accSpeed = 150f;
         //Direction pointing downward
         if (isFlat)
         {
@@ -59,4 +50,42 @@ public class PlayerMovement : MonoBehaviour
 
         rb.AddForce(tilt * accSpeed);
     }
+
+    public void leftButtonFunction()
+    {
+        leftButton = true;
+        rightButton = false;
+    }
+
+    public void rightButtonFunction()
+    {
+        rightButton = true;
+        leftButton = false;
+    }
+
+    private void IfStatements()
+    {
+        if (ButtonMovement == false)
+        {
+            UsingAccelerometerMovement();
+            Debug.Log("accccellerorting");
+            rightButton = false;
+            leftButton = false;
+        }
+
+        if (GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
+        {
+            if (leftButton == true)
+            {
+                rb.GetComponent<Rigidbody>().velocity = (-Vector3.right * moveSpeed);
+                rightButton = true;
+            }
+            else if (rightButton == true)
+            {
+                rb.GetComponent<Rigidbody>().velocity = (Vector3.right * moveSpeed);
+                leftButton = false;
+            }
+        }
+    }
+
 }

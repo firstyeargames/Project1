@@ -121,7 +121,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 865444}
-  - component: {fileID: 865445}
   - component: {fileID: 865446}
   - component: {fileID: 865447}
   m_Layer: 0
@@ -145,18 +144,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &865445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942e8b50c6390b641bc60d559eaec645, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &865446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +438,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 172480437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 685791392}
+        m_MethodName: rightButtonFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &172480437
@@ -963,11 +961,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 685791391, guid: 12a01eade5556254c973a9fa43332ed4, type: 3}
       propertyPath: m_Constraints
-      value: 8
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 685791391, guid: 12a01eade5556254c973a9fa43332ed4, type: 3}
       propertyPath: m_AngularDrag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 685791392, guid: 12a01eade5556254c973a9fa43332ed4, type: 3}
+      propertyPath: ButtonMovement
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a01eade5556254c973a9fa43332ed4, type: 3}
@@ -1209,7 +1211,7 @@ GameObject:
   - component: {fileID: 993222327}
   - component: {fileID: 993222326}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: CuttingBoard
   m_TagString: CuttingBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,7 +1715,7 @@ GameObject:
   - component: {fileID: 1728837985}
   m_Layer: 0
   m_Name: Brigde
-  m_TagString: Untagged
+  m_TagString: CuttingBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1817,7 +1819,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1790112898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 685791392}
+        m_MethodName: leftButtonFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1790112898

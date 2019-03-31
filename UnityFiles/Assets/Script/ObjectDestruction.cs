@@ -6,7 +6,7 @@ public class ObjectDestruction : MonoBehaviour
 {
     int amountOfKnigeDodged = 0;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag.Equals("Shredder"))
         {
@@ -15,9 +15,12 @@ public class ObjectDestruction : MonoBehaviour
             Debug.Log("Game Over" + amountOfKnigeDodged);
         }
 
-        if (other.gameObject.tag.Equals("CuttingBoard"))
+
+        if (other.gameObject.name == "CuttingBoard")
         {
             Destroy(gameObject);
+            amountOfKnigeDodged++;
+            Debug.Log("Game Over" + amountOfKnigeDodged);
         }
     }
 }

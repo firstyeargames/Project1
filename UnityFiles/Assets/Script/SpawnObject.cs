@@ -27,14 +27,13 @@ public class SpawnObject : MonoBehaviour
         // Random range for spawning but within camera screen
         randomSpawns = Random.Range(minSpawnRange, maxSpawnRange);
         objPosition = new Vector3(randomSpawns, 10f, 1f);
-
     }
 
     void spawnObj()
-    {   
+    {
         spawnHolder = Instantiate(obj, objPosition, Quaternion.identity);
         spawnHolder.transform.eulerAngles = new Vector3(90f, 0f, 90f);
-        objRigidbody.velocity = new Vector3(0, Random.Range(0, 1) * Time.deltaTime, 0);
+        objRigidbody.GetComponent<Rigidbody>().drag = Random.Range(5, 10);
         spawnList.Add(spawnHolder);
         objRigidbody.useGravity = true;
     }
