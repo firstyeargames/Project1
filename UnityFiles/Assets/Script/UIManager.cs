@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,16 +12,18 @@ public class UIManager : MonoBehaviour
 
     [Header("Components")]
     public Text score;
-    //Holds the buttons for movement
-    public GameObject playerMovementButtons;
     public int knifesDodged;
-
-    [Header("Menu System")]
-    public GameObject Panel;
-    public GameObject Controls;
-    public GameObject Menu;
     int count = 0;
     public bool panelVisible = true;
+    bool pauseActive = false;
+    bool accelermoterBool = false;
+
+    [Header("Menu System")]
+    public GameObject rightButton, leftButton;
+    public GameObject Controls;
+    public GameObject Menu;
+    public GameObject pauseButton;
+
 
     private void Awake()
     {
@@ -32,62 +35,97 @@ public class UIManager : MonoBehaviour
     {
         knifesDodged = spawnObject.knifesSpawned;
         score.text = " Knifes: " + knifesDodged.ToString();
-
-        if (panelVisible == true)
+      
+      if (panelVisible == true)
         {
             spawnObject.CancelSpawns();
-            playerMovementButtons.SetActive(false);
+            rightButton.SetActive(false);
+            leftButton.SetActive(false);
+        }
+
+      if(accelermoterBool == true)
+        {
+            leftButton.SetActive(false);
+            rightButton.SetActive(false);
+        }
+
+        if (spawnObject.player == null)
+        {
+            Menu.SetActive(true);
+            panelVisible = true;
         }
     }
 
     public void Accelerometer()
     {
+        PlayerMovement.UsingAccelerometerMovement();
         PlayerMovement.ButtonMovement = false;
-        playerMovementButtons.SetActive(false);
+        Controls.SetActive(false);
+        startGame();
+        accelermoterBool = true;
     }
 
     public void MovementByButtons()
     {
         PlayerMovement.ButtonMovement = true;
-        playerMovementButtons.SetActive(true);
+        rightButton.SetActive(true);
+        leftButton.SetActive(true);
+        startGame();
+        Controls.SetActive(false);
     }
 
     // Menu system controls
-
     public void OptionsFunction()
     {
         Menu.SetActive(false);
         Controls.SetActive(true);
     }
 
+    /// <summary>
+    /// This function reduces real time to 0 meaning the game is paused
+    /// if count is equal to 1 the game is paused
+    /// if count is equal to 2 the game is resumed and count is equal to 0
+    /// </summary>
+
     public void PauseButton()
     {
         count++;
-        if (count == 1)
-        {
-            Panel.SetActive(true);
-            spawnObject.CancelSpawns();
-            panelVisible = true;
-            PlayerMovement.rb.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            playerMovementButtons.SetActive(false);
-        }
 
-        if (count == 2)
-        {
-            count = 0;
-            Panel.SetActive(false);
-            spawnObject.spawnKnifes();
-            playerMovementButtons.SetActive(true);
-            spawnObject.spawnKnifes();
-        }
+        Menu.SetActive(true);
+        panelVisible = true;
+        pauseActive = true;
+        Time.timeScale = 0f;
+        Debug.Log("pause active true");
+        pauseButton.SetActive(false);
+        
+        //if (count == 2)
+        //{
+        //    Panel.SetActive(false);
+        //    pauseActive = false;
+        //    Time.timeScale = 1.0f;
+        //    spawnObject.spawnKnifes();
+        //    count = 0;
+        //    Debug.Log("pause active false");
+        //}
     }
 
+    /// <summary>
+    ///  checking if the player is alive if not reload the level
+    /// </summary>
     public void startGame()
     {
-        Panel.SetActive(false);
+        Menu.SetActive(false);
         panelVisible = false;
-        playerMovementButtons.SetActive(true);
         spawnObject.spawnKnifes();
+        Time.timeScale = 1.0f;
+        pauseButton.SetActive(true);
+        rightButton.SetActive(true);
+        leftButton.SetActive(true);
+
+        if (spawnObject.player == null)
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
 }

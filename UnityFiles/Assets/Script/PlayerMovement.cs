@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void UsingAccelerometerMovement()
+    public void UsingAccelerometerMovement()
     {
         Vector3 tilt = new Vector3(Input.acceleration.x, 0f, 0f);
         float accSpeed = 150f;
