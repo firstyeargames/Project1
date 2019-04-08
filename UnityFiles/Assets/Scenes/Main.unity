@@ -163,7 +163,6 @@ MonoBehaviour:
   panelVisible: 1
   rightButton: {fileID: 172480434}
   leftButton: {fileID: 1790112895}
-  Panel: {fileID: 1406924050}
   Controls: {fileID: 739127279}
   Menu: {fileID: 1899571158}
   pauseButton: {fileID: 805939645}
@@ -384,6 +383,7 @@ GameObject:
   - component: {fileID: 172480437}
   - component: {fileID: 172480436}
   - component: {fileID: 172480439}
+  - component: {fileID: 172480440}
   m_Layer: 5
   m_Name: Rigth
   m_TagString: Untagged
@@ -449,18 +449,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 172480437}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 685791392}
-        m_MethodName: rightButtonFunction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &172480437
@@ -516,6 +505,37 @@ MonoBehaviour:
   axisValue: 1
   responseSpeed: 10000
   returnToCentreSpeed: 10000
+--- !u!114 &172480440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172480434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 685791392}
+          m_MethodName: rightButtonFunction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &216154392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2236,6 +2256,7 @@ GameObject:
   - component: {fileID: 1790112898}
   - component: {fileID: 1790112897}
   - component: {fileID: 1790112900}
+  - component: {fileID: 1790112901}
   m_Layer: 5
   m_Name: Left
   m_TagString: Untagged
@@ -2301,18 +2322,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1790112898}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 685791392}
-        m_MethodName: leftButtonFunction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1790112898
@@ -2368,6 +2378,37 @@ MonoBehaviour:
   axisValue: -1
   responseSpeed: 10000
   returnToCentreSpeed: 10000
+--- !u!114 &1790112901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790112895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 685791392}
+          m_MethodName: leftButtonFunction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &1799537819
 GameObject:
   m_ObjectHideFlags: 0
