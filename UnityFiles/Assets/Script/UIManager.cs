@@ -33,6 +33,10 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (spawnObject.player == null)
+        {
+            SceneManager.LoadScene(0);
+        }
         knifesDodged = spawnObject.knifesSpawned;
         score.text = " Knifes: " + knifesDodged.ToString();
       
@@ -114,6 +118,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void startGame()
     {
+        Controls.SetActive(false);
         Menu.SetActive(false);
         panelVisible = false;
         spawnObject.spawnKnifes();
@@ -122,10 +127,6 @@ public class UIManager : MonoBehaviour
         rightButton.SetActive(true);
         leftButton.SetActive(true);
 
-        if (spawnObject.player == null)
-        {
-            SceneManager.LoadScene(0);
-        }
     }
 
 }

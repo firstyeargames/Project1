@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody rigidbody;
-    public float speed = 50f;
+    public float speed = 100f;
     bool rightBool, leftBool, stopBool;
 
     void Start()
