@@ -23,10 +23,12 @@ public class UIManager : MonoBehaviour
     public GameObject Controls;
     public GameObject Menu;
     public GameObject pauseButton;
+    private IEnumerator coroutine;
 
 
     private void Awake()
     {
+        panelVisible = true;
         score.GetComponent<Text>();
         Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
@@ -35,7 +37,9 @@ public class UIManager : MonoBehaviour
     {
         if (spawnObject.player == null)
         {
-            SceneManager.LoadScene(0);
+            coroutine = WaitBeforeReload(2.0f);
+            StartCoroutine(coroutine);
+
         }
         knifesDodged = spawnObject.knifesSpawned;
         score.text = " Knifes: " + knifesDodged.ToString();
@@ -65,7 +69,8 @@ public class UIManager : MonoBehaviour
         PlayerMovement.UsingAccelerometerMovement();
         PlayerMovement.ButtonMovement = false;
         Controls.SetActive(false);
-        startGame();
+        //startGame();
+        resumeGame();
         accelermoterBool = true;
     }
 
@@ -74,8 +79,8 @@ public class UIManager : MonoBehaviour
         PlayerMovement.ButtonMovement = true;
         rightButton.SetActive(true);
         leftButton.SetActive(true);
-        startGame();
-        Controls.SetActive(false);
+        //startGame();
+        resumeGame();
     }
 
     // Menu system controls
@@ -118,15 +123,28 @@ public class UIManager : MonoBehaviour
     /// </summary>
     public void startGame()
     {
+        resumeGame(); 
+        rightButton.SetActive(true);
+        leftButton.SetActive(true);
+
+    }
+
+    // on resume game
+    void resumeGame()
+    {
         Controls.SetActive(false);
         Menu.SetActive(false);
         panelVisible = false;
         spawnObject.spawnKnifes();
         Time.timeScale = 1.0f;
         pauseButton.SetActive(true);
-        rightButton.SetActive(true);
-        leftButton.SetActive(true);
-
     }
 
+    // wait seconds before restarting game to see watermelon sliced
+    private IEnumerator WaitBeforeReload(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        SceneManager.LoadScene(0);
+
+    }
 }
