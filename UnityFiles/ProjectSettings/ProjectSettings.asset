@@ -631,10 +631,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: cee80034-c8af-468c-aea6-056d5316ba25
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
-  projectName: Project1
-  organizationId: firstyeargames
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
